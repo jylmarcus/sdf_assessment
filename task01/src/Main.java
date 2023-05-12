@@ -1,4 +1,4 @@
-package task01.src;
+package src;
 
 import java.io.Console;
 

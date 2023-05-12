@@ -52,7 +52,7 @@ public class Main {
         for (String word : avgMap.keySet()) {
             System.out.println(word);
             for (String nextWord : avgMap.get(word).keySet()) {
-                System.out.printf("    %s %.1f\n", nextWord, avgMap.get(word).get(nextWord));
+                System.out.printf("    %s %f\n", nextWord, avgMap.get(word).get(nextWord));
             }
         }
     }

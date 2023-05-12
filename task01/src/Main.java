@@ -25,12 +25,22 @@ public class Main {
         switch (operator) {
             case "+":
                 $last = add(a, b);
-                System.out.printf("%.0f\n", $last);
+                if($last.toString().endsWith(".0")){
+                    System.out.printf("%.0f\n", $last);
+                } else {
+                    System.out.printf("%.1f\n", $last);
+                }
+                
                 break;
 
             case "-":
                 $last = subtract(a,b);
-                System.out.printf("%.0f\n", $last);
+                if($last.toString().endsWith(".0")){
+                    System.out.printf("%.0f\n", $last);
+                } else {
+                    System.out.printf("%.1f\n", $last);
+                }
+                
                 break;
 
             case "/":
@@ -38,13 +48,23 @@ public class Main {
                     System.out.println("Cannot divide by zero");
                 } else {
                     $last = divide(a,b);
-                    System.out.printf("%.0f\n", $last);
+                    if($last.toString().endsWith(".0")){
+                        System.out.printf("%.0f\n", $last);
+                    } else {
+                        System.out.printf("%.1f\n", $last);
+                    }
+                    
                 }
                 break;
 
             case "*":
                 $last = multiply(a,b);
-                System.out.printf("%.0f\n", $last);
+                if($last.toString().endsWith(".0")){
+                    System.out.printf("%.0f\n", $last);
+                } else {
+                    System.out.printf("%.1f\n", $last);
+                }
+                
                 break;
 
             default:
@@ -53,7 +73,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        System.out.println("Welcome");
+        System.out.println("Welcome.");
 
         Console cons = System.console();
         String input = "";

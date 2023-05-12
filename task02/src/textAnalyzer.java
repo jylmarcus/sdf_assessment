@@ -4,9 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class textAnalyzer {
@@ -15,6 +13,7 @@ public class textAnalyzer {
         
     }
 
+    //import text file as string
     public static String importFile(File file) throws IOException {
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
@@ -33,12 +32,18 @@ public class textAnalyzer {
         return sb.toString();
     }
 
+    //replace dashes with spaces
+    //replace double spaces with single spaces
+    //replace punctuation with empty string
+    //return string array with all words in same order as text
     public static String[] cleanText(String text) {
         text = text.replace("-", " ");
+        text = text.replace("  ", " ");
         String[] cleanedText = text.replaceAll("[^a-zA-Z ]", "").toLowerCase().trim().split(" ");
         return cleanedText;
     }
 
+    //map words from cleaned text wordMap<word, <next word, number of next words>>
     public static Map<String, HashMap<String, Float>> mapWords(String[] text, Map<String, HashMap<String, Float>> wordMap) {
         for(int i = 0; i < text.length-1; i++) {
             HashMap<String, Float> tempNextWordMap = new HashMap<String, Float>();
@@ -53,6 +58,7 @@ public class textAnalyzer {
         return wordMap;
     }
 
+    //function to take in wordMap(word, <nextword, number>) and output avgMap(word, <nextwword, avg>)
     public static Map<String,HashMap<String,Float>> analyzeText(Map<String, HashMap<String, Float>> wordMap) {
 
         Map<String, HashMap<String, Float>> avgMap = new HashMap<String, HashMap<String, Float>>();

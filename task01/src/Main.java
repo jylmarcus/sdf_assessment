@@ -3,34 +3,34 @@ package src;
 import java.io.Console;
 
 public class Main {
-    public static Integer $last = 0;
+    public static Float $last = 0f;
 
-    public static Integer add(int a, int b) {
+    public static Float add(float a, float b) {
         return a + b;
     }
 
-    public static Integer subtract(int a, int b) {
+    public static Float subtract(float a, float b) {
         return a - b;
     }
 
-    public static Integer divide(int a, int b) {
+    public static Float divide(float a, float b) {
         return a / b;
     }
 
-    public static Integer multiply(int a, int b) {
+    public static Float multiply(float a, float b) {
         return a * b;
     }
 
-    public static void evaluate(int a, String operator, int b) {
+    public static void evaluate(float a, String operator, float b) {
         switch (operator) {
             case "+":
                 $last = add(a, b);
-                System.out.println($last);
+                System.out.printf("%.0f\n", $last);
                 break;
 
             case "-":
                 $last = subtract(a,b);
-                System.out.println($last);
+                System.out.printf("%.0f\n", $last);
                 break;
 
             case "/":
@@ -38,13 +38,13 @@ public class Main {
                     System.out.println("Cannot divide by zero");
                 } else {
                     $last = divide(a,b);
-                    System.out.println($last);
+                    System.out.printf("%.0f\n", $last);
                 }
                 break;
 
             case "*":
                 $last = multiply(a,b);
-                System.out.println($last);
+                System.out.printf("%.0f\n", $last);
                 break;
 
             default:
@@ -69,11 +69,11 @@ public class Main {
             if(inputArray[0].trim().equals("$last") && inputArray[2].trim().equals("$last")) {
                 evaluate($last, inputArray[1], $last);
             } else if (inputArray[2].trim().equals("$last")) {
-                evaluate(Integer.parseInt(inputArray[0].trim()), inputArray[1], $last);
+                evaluate(Float.parseFloat(inputArray[0].trim()), inputArray[1], $last);
             } else if (inputArray[0].trim().equals("$last")) {
-                evaluate($last, inputArray[1], Integer.parseInt(inputArray[2].trim()));
+                evaluate($last, inputArray[1], Float.parseFloat(inputArray[2].trim()));
             } else {
-                evaluate(Integer.parseInt(inputArray[0].trim()), inputArray[1], Integer.parseInt(inputArray[2].trim()));
+                evaluate(Float.parseFloat(inputArray[0].trim()), inputArray[1], Float.parseFloat(inputArray[2].trim()));
             }
         }
     }
